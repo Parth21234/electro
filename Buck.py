@@ -48,7 +48,7 @@
 """
 
 import functions_Buck as functions
-from functions_Buck import inductor_ripple_current, inductor_selection
+from functions_Buck import inductor_ripple_current, inductor_selection, output_Capacitor_Selection
 
 v_out = float(input())
 i_out_max = float(input())
@@ -69,4 +69,9 @@ print(inductor_ripple_current)
 
 app_specificMax_switch_current = inductor_ripple_current/2 + i_out_max
 print(app_specificMax_switch_current)
+
+eSR = float(input()) # Equivalent series resistance of the used output capacitor
+
+output_Capacitor_value, output_Capacitor_voltage = output_Capacitor_Selection(inductor_ripple_current, switching_frequency, eSR, v_out)
+print(output_Capacitor_value, output_Capacitor_voltage)
 
